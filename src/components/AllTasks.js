@@ -15,6 +15,10 @@ const AllTasks = () => {
         setMyTask(filteredTasks)
     }
 
+    const allDeleteHandler = () =>{
+        setMyTask([])
+    }
+
 
 
     return <div>
@@ -28,6 +32,8 @@ const AllTasks = () => {
                 </div>
             })
         }
+
+        <button className="main-button" onClick={allDeleteHandler}>vymazať všetko</button>
     </div>
 
 
