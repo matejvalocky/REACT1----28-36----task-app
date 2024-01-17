@@ -1,22 +1,30 @@
-import React from 'react'
 import "./AllTasks.css"
 import data from '../data'
+import { useState } from "react"
 
 const AllTasks = () => {
-    const tasksHandler = () => {
-        console.log("klik");
+
+    const [myTask, setMyTask] = useState(data)
+
+
+    const tasksHandler = (idecko) => {
+        const filteredTasks = myTask.filter((oneTask) => {
+            return oneTask.id !== idecko
+        })
+
+        setMyTask(filteredTasks)
     }
 
-    
+
 
     return <div>
         {
-            data.map((jednaUloha) => {
-                const {id, name} = jednaUloha // toto je destructuring
+            myTask.map((jednaUloha) => {
+                const { id, name } = jednaUloha // toto je destructuring
 
                 return <div className='one-task' key={id}>
                     <h4>{name}</h4>
-                    <button onClick={tasksHandler}>vymazať</button>
+                    <button onClick={() => tasksHandler(id)}>vymazať</button>
                 </div>
             })
         }
